@@ -1,0 +1,70 @@
+# Initialize an empty list to store tasks
+tasks = []
+
+def add_task(task):
+    """Add a new task to the list"""
+    tasks.append(task)
+    #append is use to add the item at the end of the list
+
+def view_tasks():
+    """Print out all tasks in the list"""
+    if not tasks:  # Check if the list is empty
+        print("You haven't created any tasks yet.")
+    else:
+        print("To-Do List:")
+        for i, task in enumerate(tasks, start=1):
+            print(f"{i}. {task}")
+            #enumerate ham jab lagate hain hain jab hamen index(position) or value dono chahie ho 
+
+
+# def view_tasks():
+#     """Print out all tasks in the list"""
+#     print("To-Do List:")
+#     for i, task in enumerate(tasks, start=1):
+#         print(f"{i}. {task}")
+
+def delete_task(task_number):
+    """Remove a task from the list"""
+    if 1 <= task_number <= len(tasks):  # Check if the task_number is valid
+        del tasks[task_number - 1]
+    else:
+        print("Invalid task number.")
+
+#########
+# def delete_task(task_number):
+    """Remove a task from the list"""
+#     try:
+#         del tasks[task_number - 1]
+#     except IndexError:
+#         print("Invalid task number.")
+##########
+
+
+
+def main():
+    while True:
+        print("\nOptions:") #\n  # that "Options:" starts on a new line,
+        print("1. Add task")
+        print("2. View tasks")
+        print("3. Delete task")
+        print("4. Quit")
+        
+        choice = input("Choose an option: ")
+        
+        if choice == "1":
+            task = input("Enter a task: ")
+            add_task(task)
+        elif choice == "2":
+            view_tasks()
+        elif choice == "3":
+            task_number = int(input("Enter task number to delete: "))
+            delete_task(task_number)
+        elif choice == "4":
+            break
+        else:
+            print("Invalid option. Please choose again.")
+
+if __name__ == "__main__":
+    main()
+
+
